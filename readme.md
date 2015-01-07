@@ -24,11 +24,11 @@ var alphaSort = require('alpha-sort');
 
 ## API
 
-### alphasort.asc
+### alphaSort.asc
 
 Ascending sort.
 
-### alphasort.desc
+### alphaSort.desc
 
 Descending sort.
 
