@@ -1,0 +1,36 @@
+{
+  "name": "alpha-sort",
+  "version": "0.0.0",
+  "description": "Alphabetically sort an array of strings",
+  "license": "MIT",
+  "repository": "sindresorhus/alpha-sort",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "alpha",
+    "alphabet",
+    "alphabetically",
+    "sort",
+    "compare",
+    "comparator",
+    "locale",
+    "unicode",
+    "string",
+    "str"
+  ],
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
