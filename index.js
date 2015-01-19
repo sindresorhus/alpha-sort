@@ -1,9 +1,9 @@
 'use strict';
 
 exports.asc = function (a, b) {
-	return a.localeCompare(b);
+	return a === b ? 0 : a.localeCompare(b);
 };
 
 exports.desc = function (a, b) {
-	return b.localeCompare(a);
+	return a === b ? 0 : b.localeCompare(a);
 };
