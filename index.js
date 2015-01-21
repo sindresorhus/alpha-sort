@@ -5,5 +5,5 @@ exports.asc = function (a, b) {
 };
 
 exports.desc = function (a, b) {
-	return a === b ? 0 : b.localeCompare(a);
+	return exports.asc(b, a);
 };
