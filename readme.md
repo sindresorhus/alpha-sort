@@ -33,6 +33,11 @@ Ascending sort.
 Descending sort.
 
 
+## Related
+
+- [num-sort](https://github.com/sindresorhus/num-sort) - Sort an array of numbers
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
