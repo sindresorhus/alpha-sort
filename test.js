@@ -1,11 +1,9 @@
-'use strict';
-var test = require('ava');
-var alphaSort = require('./');
+import test from 'ava';
+import m from './';
 
-test(function (t) {
-	t.assert(['b', 'a', 'c'].sort(alphaSort.asc)[0] === 'a');
-	t.assert(['b', 'å', 'c'].sort(alphaSort.asc)[2] === 'å');
-	t.assert(['b', 'a', 'c'].sort(alphaSort.desc)[0] === 'c');
-	t.assert(['b', 'å', 'c'].sort(alphaSort.desc)[0] === 'å');
-	t.end();
+test(t => {
+	t.is(['b', 'a', 'c'].sort(m.asc)[0], 'a');
+	t.is(['b', 'å', 'c'].sort(m.asc)[2], 'å');
+	t.is(['b', 'a', 'c'].sort(m.desc)[0], 'c');
+	t.is(['b', 'å', 'c'].sort(m.desc)[0], 'å');
 });
