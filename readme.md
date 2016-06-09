@@ -15,7 +15,7 @@ $ npm install --save alpha-sort
 ## Usage
 
 ```js
-var alphaSort = require('alpha-sort');
+const alphaSort = require('alpha-sort');
 
 ['b', 'a', 'c'].sort(alphaSort.asc);
 //=> ['a', 'b', 'c']
@@ -40,4 +40,4 @@ Descending sort.
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
