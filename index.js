@@ -8,7 +8,7 @@ if (brokenLocaleCompare) {
 		return a > b ? 1 : a < b ? -1 : 0;
 	};
 } else if (typeof Intl.Collator === 'function') {
-	var collator = new Intl.Collator({sensitivity: 'variant'});
+	var collator = new Intl.Collator();
 	compare = function (a, b) {
 		return collator.compare(a, b);
 	};
