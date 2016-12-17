@@ -1,14 +1,21 @@
 'use strict';
 
-// localCompare works in Node 0.10, but broken in 0.12 and io.js
 var brokenLocaleCompare = 'a'.localeCompare('å') === -1;
+var compare = null;
 
-function compare(a, b) {
-	if (brokenLocaleCompare) {
+if (brokenLocaleCompare) {
+	compare = function (a, b) {
 		return a > b ? 1 : a < b ? -1 : 0;
-	}
-
-	return a === b ? 0 : a.localeCompare(b);
+	};
+} else if (global.Intl !== undefined && typeof Intl.Collator === 'function') {
+	var collator = new Intl.Collator();
+	compare = function (a, b) {
+		return collator.compare(a, b);
+	};
+} else {
+	compare = function (a, b) {
+		return a === b ? 0 : a.localeCompare(b);
+	};
 }
 
 exports.asc = function (a, b) {
