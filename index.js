@@ -1,27 +1,12 @@
 'use strict';
 
-var brokenLocaleCompare = 'a'.localeCompare('å') === -1;
-var compare = null;
+const collator = new Intl.Collator();
+let compare = (a, b) => a === b ? 0 : collator.compare(a, b);
 
+const brokenLocaleCompare = 'a'.localeCompare('å') === -1;
 if (brokenLocaleCompare) {
-	compare = function (a, b) {
-		return a > b ? 1 : a < b ? -1 : 0;
-	};
-} else if (global.Intl !== undefined && typeof Intl.Collator === 'function') {
-	var collator = new Intl.Collator();
-	compare = function (a, b) {
-		return collator.compare(a, b);
-	};
-} else {
-	compare = function (a, b) {
-		return a === b ? 0 : a.localeCompare(b);
-	};
+	compare = (a, b) => a > b ? 1 : a < b ? -1 : 0;
 }
 
-exports.asc = function (a, b) {
-	return compare(a, b);
-};
-
-exports.desc = function (a, b) {
-	return compare(b, a);
-};
+exports.asc = (a, b) => compare(a, b);
+exports.desc = (a, b) => compare(b, a);
