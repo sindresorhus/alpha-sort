@@ -3,7 +3,7 @@
 const collator = new Intl.Collator();
 let compare = (a, b) => a === b ? 0 : collator.compare(a, b);
 
-const brokenLocaleCompare = 'a'.localeCompare('å') === -1;
+const brokenLocaleCompare = collator.compare('b', 'å') > -1;
 if (brokenLocaleCompare) {
 	compare = (a, b) => a > b ? 1 : a < b ? -1 : 0;
 }
