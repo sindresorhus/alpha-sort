@@ -8,7 +8,7 @@ With correct sorting of unicode characters.
 ## Install
 
 ```
-$ npm install --save alpha-sort
+$ npm install alpha-sort
 ```
 
 
@@ -17,20 +17,20 @@ $ npm install --save alpha-sort
 ```js
 const alphaSort = require('alpha-sort');
 
-['b', 'a', 'c'].sort(alphaSort.asc);
+['b', 'a', 'c'].sort(alphaSort.ascending);
 //=> ['a', 'b', 'c']
 ```
 
 
 ## API
 
-### alphaSort.asc
+### alphaSort.ascending
 
-Ascending sort.
+Ascending sort comparator.
 
-### alphaSort.desc
+### alphaSort.descending
 
-Descending sort.
+Descending sort comparator.
 
 
 ## Related
