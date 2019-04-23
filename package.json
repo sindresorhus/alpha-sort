@@ -29,7 +29,6 @@
 		"locale",
 		"unicode",
 		"string",
-		"str",
 		"intl",
 		"collator"
 	],
