@@ -32,6 +32,25 @@ Ascending sort comparator.
 
 Descending sort comparator.
 
+### alphaSort.caseInsensitiveAscending
+
+Case-insensitive ascending sort comparator.
+
+Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a case-sensitive comparison:
+
+```js
+const alphaSort = require('alpha-sort');
+
+['bar', 'baz', 'Baz'].sort(alphaSort.caseInsensitiveAscending);
+//=> ['bar', 'Baz', 'baz']
+```
+
+### alphaSort.caseInsensitiveDescending
+
+Case-insensitive descending sort comparator.
+
+The same note for `caseInsensitiveAscending` applies.
+
 
 ## Related
 

@@ -25,3 +25,29 @@ import alphaSort = require('alpha-sort');
 ```
 */
 export const descending: StringComparator;
+
+/**
+Case-insensitive ascending sort comparator.
+
+@example
+```
+import alphaSort = require('alpha-sort');
+
+['B', 'a', 'C'].sort(alphaSort.caseInsensitiveAscending);
+//=> ['a', 'B', 'C']
+```
+*/
+export const caseInsensitiveAscending: StringComparator;
+
+/**
+Case-insensitive descending sort comparator.
+
+@example
+```
+import alphaSort = require('alpha-sort');
+
+['B', 'a', 'C'].sort(alphaSort.caseInsensitiveDescending);
+//=> ['C', 'B', 'a']
+```
+*/
+export const caseInsensitiveDescending: StringComparator;
