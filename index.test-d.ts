@@ -1,12 +1,19 @@
 import {expectType} from 'tsd';
 import alphaSort = require('.');
 
-expectType<number>(alphaSort.ascending('a', 'b'));
-expectType<number>(alphaSort.descending('a', 'b'));
-expectType<number>(alphaSort.caseInsensitiveAscending('a', 'b'));
-expectType<number>(alphaSort.caseInsensitiveDescending('a', 'b'));
+declare const options: {
+	descending?: boolean;
+	natural?: boolean;
+	caseInsensitive?: boolean;
+	preprocessor?: (string: string) => string;
+} | undefined;
 
-['b', 'a', 'c'].sort(alphaSort.ascending);
-['b', 'a', 'c'].sort(alphaSort.descending);
-['b', 'a', 'c'].sort(alphaSort.caseInsensitiveAscending);
-['b', 'a', 'c'].sort(alphaSort.caseInsensitiveDescending);
+expectType<Parameters<typeof alphaSort>[0]>(options);
+
+expectType<number>(alphaSort()('a', 'b'));
+expectType<number>(alphaSort({})('a', 'b'));
+expectType<number>(alphaSort(options)('a', 'b'));
+
+['b', 'a', 'c'].sort(alphaSort());
+['b', 'a', 'c'].sort(alphaSort({}));
+['b', 'a', 'c'].sort(alphaSort(options));
