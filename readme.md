@@ -78,7 +78,7 @@ Note: If two elements are considered equal in the natural sort order comparison,
 Type: `function`\
 Default: `undefined`
 
-A custom function that you can provide to manipulate the elements before sorting. This does not modify the original array nor the output values (only the output order).
+A custom function that you can provide to manipulate the elements before sorting. This does not modify the values of the array; it only interferes in the sorting order.
 
 This can be used, for example, if you are sorting book titles in English and want to ignore common articles such as `the`, `a` or `an`:
 
