@@ -12,19 +12,45 @@ declare namespace alphaSort {
 		/**
 		Whether or not to sort case-insensitively.
 
+		Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a standard (case-sensitive) comparison.
+
+		@example
+		```
+		const alphaSort = require('alpha-sort');
+
+		['bar', 'baz', 'Baz'].sort(alphaSort({caseInsensitive: true}));
+		//=> ['bar', 'Baz', 'baz']
+		```
+
 		@default false
 		*/
 		readonly caseInsensitive?: boolean;
 
 		/**
-		Whether or not to respect the natural order of numbers in the string (such as sorting `10` after `2`).
+		Whether or not to sort using natural sort order (such as sorting `10` after `2`).
+
+		Note: If two elements are considered equal in the natural sort order comparison, the tie-break will be a standard (non-natural) comparison.
 
 		@default false
 		*/
 		readonly natural?: boolean;
 
 		/**
-		A custom preprocessor to execute on the strings before sorting. The array is not modified.
+		A custom function that you can provide to manipulate the elements before sorting. This does not modify the values of the array; it only interferes in the sorting order.
+
+		This can be used, for example, if you are sorting book titles in English and want to ignore common articles such as `the`, `a` or `an`.
+
+		Note: If two elements are considered equal when sorting with a custom preprocessor, the tie-break will be a comparison without the custom preprocessor.
+
+		@example
+		```
+		const alphaSort = require('alpha-sort');
+
+		['The Foo', 'Bar'].sort(alphaSort({
+			preprocessor: title => title.replace(/^(?:the|a|an) /i, '')
+		}));
+		//=> ['Bar', 'The Foo']
+		```
 
 		@default undefined
 		*/

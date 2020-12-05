@@ -46,14 +46,14 @@ Type: `object`
 Type: `boolean`\
 Default: `false`
 
-Whether or not to sort descending.
+Whether or not to sort in descending order.
 
 ##### caseInsensitive
 
 Type: `boolean`\
 Default: `false`
 
-Whether or not to sort in a case-insensitive way.
+Whether or not to sort case-insensitively.
 
 Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a standard (case-sensitive) comparison. Example:
 
@@ -69,7 +69,7 @@ const alphaSort = require('alpha-sort');
 Type: `boolean`\
 Default: `false`
 
-Whether or not to sort using [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order).
+Whether or not to sort using [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) (such as sorting `10` after `2`).
 
 Note: If two elements are considered equal in the natural sort order comparison, the tie-break will be a standard (non-natural) comparison.
 
@@ -86,7 +86,7 @@ This can be used, for example, if you are sorting book titles in English and wan
 const alphaSort = require('alpha-sort');
 
 ['The Foo', 'Bar'].sort(alphaSort({
-	preprocessor: title => title.replace(/^(the|a|an) /i, '')
+	preprocessor: title => title.replace(/^(?:the|a|an) /i, '')
 }));
 //=> ['Bar', 'The Foo']
 ```
