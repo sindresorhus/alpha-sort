@@ -14,15 +14,15 @@ declare namespace alphaSort {
 
 		Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a standard (case-sensitive) comparison.
 
+		@default false
+
 		@example
 		```
-		const alphaSort = require('alpha-sort');
+		import alphaSort = require('alpha-sort');
 
 		['bar', 'baz', 'Baz'].sort(alphaSort({caseInsensitive: true}));
 		//=> ['bar', 'Baz', 'baz']
 		```
-
-		@default false
 		*/
 		readonly caseInsensitive?: boolean;
 
@@ -42,17 +42,17 @@ declare namespace alphaSort {
 
 		Note: If two elements are considered equal when sorting with a custom preprocessor, the tie-break will be a comparison without the custom preprocessor.
 
+		@default undefined
+
 		@example
 		```
-		const alphaSort = require('alpha-sort');
+		import alphaSort = require('alpha-sort');
 
 		['The Foo', 'Bar'].sort(alphaSort({
 			preprocessor: title => title.replace(/^(?:the|a|an) /i, '')
 		}));
 		//=> ['Bar', 'The Foo']
 		```
-
-		@default undefined
 		*/
 		readonly preprocessor?: (string: string) => string;
 	}
@@ -66,7 +66,7 @@ declare const alphaSort: {
 
 	@example
 	```
-	const alphaSort = require('alpha-sort');
+	import alphaSort = require('alpha-sort');
 
 	['b', 'a', 'c'].sort(alphaSort());
 	//=> ['a', 'b', 'c']
