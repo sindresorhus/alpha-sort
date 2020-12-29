@@ -16,6 +16,7 @@
 		"test": "xo && ava && tsd"
 	},
 	"files": [
+		"compare.js",
 		"index.js",
 		"index.d.ts"
 	],
@@ -23,14 +24,17 @@
 		"alpha",
 		"alphabet",
 		"alphabetically",
+		"lexicographically",
 		"sort",
 		"compare",
 		"comparator",
+		"order",
 		"locale",
 		"unicode",
 		"string",
 		"intl",
-		"collator"
+		"collator",
+		"natural"
 	],
 	"devDependencies": {
 		"ava": "^1.4.1",
