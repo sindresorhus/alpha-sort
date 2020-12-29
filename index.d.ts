@@ -32,6 +32,14 @@ declare namespace alphaSort {
 		Note: If two elements are considered equal in the natural sort order comparison, the tie-break will be a standard (non-natural) comparison.
 
 		@default false
+
+		@example
+		```
+		import alphaSort = require('alpha-sort');
+
+		['file10.txt', 'file05.txt', 'file0010.txt'].sort(alphaSort({natural: true}));
+		//=> ['file05.txt', 'file0010.txt', 'file10.txt']
+		```
 		*/
 		readonly natural?: boolean;
 
