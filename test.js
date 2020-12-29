@@ -28,7 +28,7 @@ test('case insensitive', t => {
 	);
 });
 
-test('natural', t => {
+test('`natural` option', t => {
 	const numbers = length => [...new Array(length)].map((_, index) => String(index));
 
 	t.deepEqual(
@@ -50,7 +50,7 @@ test('natural', t => {
 	);
 });
 
-test('preprocessor', t => {
+test('`preprocessor` option', t => {
 	t.deepEqual(
 		['The Foo', 'Bar'].sort(alphaSort({
 			preprocessor: title => title.replace(/^(the|a|an) /i, '')
