@@ -17,20 +17,24 @@
 	},
 	"files": [
 		"index.js",
-		"index.d.ts"
+		"index.d.ts",
+		"compare.js"
 	],
 	"keywords": [
 		"alpha",
 		"alphabet",
 		"alphabetically",
+		"lexicographically",
 		"sort",
 		"compare",
 		"comparator",
+		"order",
 		"locale",
 		"unicode",
 		"string",
 		"intl",
-		"collator"
+		"collator",
+		"natural"
 	],
 	"devDependencies": {
 		"ava": "^1.4.1",

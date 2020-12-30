@@ -1,19 +1,44 @@
 'use strict';
 
-const collator = new Intl.Collator();
-let compare = (left, right) => left === right ? 0 : collator.compare(left, right);
+const {baseCompare, naturalCompare} = require('./compare');
 
-const brokenLocaleCompare = collator.compare('b', 'å') > -1;
-if (brokenLocaleCompare) {
-	compare = (left, right) => left > right ? 1 : left < right ? -1 : 0;
+function alphaSort(options = {}) {
+	if (arguments.length === 2) {
+		throw new Error('Invalid `alphaSort` call. Did you use `.sort(alphaSort)` instead of `.sort(alphaSort())` by mistake?');
+	}
+
+	if (options.preprocessor && typeof options.preprocessor !== 'function') {
+		throw new TypeError(`Preprocessor must be a function, got ${typeof options.preprocessor}`);
+	}
+
+	const ascendingCompare = options.natural ? naturalCompare : baseCompare;
+
+	const compare = options.descending ?
+		(left, right) => ascendingCompare(right, left) :
+		ascendingCompare;
+
+	const compareWith = (left, right, transform) => compare(transform(left), transform(right));
+
+	if (options.preprocessor && options.caseInsensitive) {
+		return (left, right) =>
+			compareWith(left, right, value => options.preprocessor(value).toLowerCase()) ||
+			compareWith(left, right, value => options.preprocessor(value)) ||
+			compare(left, right);
+	}
+
+	if (options.preprocessor) {
+		return (left, right) =>
+			compareWith(left, right, value => options.preprocessor(value)) ||
+			compare(left, right);
+	}
+
+	if (options.caseInsensitive) {
+		return (left, right) =>
+			compareWith(left, right, value => value.toLowerCase()) ||
+			compare(left, right);
+	}
+
+	return compare;
 }
 
-function caseInsensitiveCompare(left, right) {
-	const lowercaseComparison = compare(left.toLowerCase(), right.toLowerCase());
-	return lowercaseComparison === 0 ? compare(left, right) : lowercaseComparison;
-}
-
-exports.ascending = (left, right) => compare(left, right);
-exports.descending = (left, right) => compare(right, left);
-exports.caseInsensitiveAscending = (left, right) => caseInsensitiveCompare(left, right);
-exports.caseInsensitiveDescending = (left, right) => caseInsensitiveCompare(right, left);
+module.exports = alphaSort;

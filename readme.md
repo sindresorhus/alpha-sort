@@ -2,7 +2,7 @@
 
 > Alphabetically sort an array of strings
 
-With correct sorting of unicode characters.
+With correct sorting of unicode characters. Supports [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) with an option.
 
 
 ## Install
@@ -17,39 +17,88 @@ $ npm install alpha-sort
 ```js
 const alphaSort = require('alpha-sort');
 
-['b', 'a', 'c'].sort(alphaSort.ascending);
+['b', 'a', 'c'].sort(alphaSort());
 //=> ['a', 'b', 'c']
+
+['b', 'a', 'c'].sort(alphaSort({descending: true}));
+//=> ['c', 'b', 'a']
+
+['B', 'a', 'C'].sort(alphaSort({caseInsensitive: true}));
+//=> ['a', 'B', 'C']
+
+['file10.txt', 'file2.txt', 'file03.txt'].sort(alphaSort({natural: true}));
+//=> ['file2.txt', 'file03.txt', 'file10.txt']
 ```
 
 
 ## API
 
-### alphaSort.ascending
+### alphaSort(options?)
 
-Ascending sort comparator.
+Get a comparator function to be used as argument for [`Array#sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
-### alphaSort.descending
+#### options
 
-Descending sort comparator.
+Type: `object`
 
-### alphaSort.caseInsensitiveAscending
+##### descending
 
-Case-insensitive ascending sort comparator.
+Type: `boolean`\
+Default: `false`
 
-Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a case-sensitive comparison:
+Whether or not to sort in descending order.
+
+##### caseInsensitive
+
+Type: `boolean`\
+Default: `false`
+
+Whether or not to sort case-insensitively.
+
+Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a standard (case-sensitive) comparison. Example:
 
 ```js
 const alphaSort = require('alpha-sort');
 
-['bar', 'baz', 'Baz'].sort(alphaSort.caseInsensitiveAscending);
+['bar', 'baz', 'Baz'].sort(alphaSort({caseInsensitive: true}));
 //=> ['bar', 'Baz', 'baz']
 ```
 
-### alphaSort.caseInsensitiveDescending
+##### natural
 
-Case-insensitive descending sort comparator.
+Type: `boolean`\
+Default: `false`
 
-The same note for `caseInsensitiveAscending` applies.
+Whether or not to sort using [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) (such as sorting `10` after `2`).
+
+Note: If two elements are considered equal in the natural sort order comparison, the tie-break will be a standard (non-natural) comparison. Example:
+
+```js
+const alphaSort = require('alpha-sort');
+
+['file10.txt', 'file05.txt', 'file0010.txt'].sort(alphaSort({natural: true}));
+//=> ['file05.txt', 'file0010.txt', 'file10.txt']
+```
+
+##### preprocessor
+
+Type: `function`\
+Default: `undefined`
+
+A custom function that you can provide to manipulate the elements before sorting. This does not modify the values of the array; it only interferes in the sorting order.
+
+This can be used, for example, if you are sorting book titles in English and want to ignore common articles such as `the`, `a` or `an`:
+
+```js
+const alphaSort = require('alpha-sort');
+
+['The Foo', 'Bar'].sort(alphaSort({
+	preprocessor: title => title.replace(/^(?:the|a|an) /i, '')
+}));
+//=> ['Bar', 'The Foo']
+```
+
+Note: If two elements are considered equal when sorting with a custom preprocessor, the tie-break will be a comparison without the custom preprocessor.
 
 
 ## Related
