@@ -5,7 +5,7 @@ let baseCompare = (left, right) => left === right ? 0 : collator.compare(left, r
 
 const brokenLocaleCompare = collator.compare('b', 'å') > -1;
 if (brokenLocaleCompare) {
-	baseCompare = (left, right) => left > right ? 1 : left < right ? -1 : 0;
+	baseCompare = (left, right) => left > right ? 1 : (left < right ? -1 : 0);
 }
 
 function naturalCompare(left, right) {

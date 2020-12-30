@@ -1,4 +1,4 @@
-import {expectType} from 'tsd';
+import {expectType, expectAssignable} from 'tsd';
 import alphaSort = require('.');
 
 declare const options: {
@@ -8,7 +8,7 @@ declare const options: {
 	preprocessor?: (string: string) => string;
 } | undefined;
 
-expectType<Parameters<typeof alphaSort>[0]>(options);
+expectAssignable<Parameters<typeof alphaSort>[0]>(options);
 
 expectType<number>(alphaSort()('a', 'b'));
 expectType<number>(alphaSort({})('a', 'b'));

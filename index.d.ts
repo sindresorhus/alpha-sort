@@ -63,33 +63,31 @@ declare namespace alphaSort {
 		```
 		*/
 		readonly preprocessor?: (string: string) => string;
-	}
+	};
 }
 
-declare const alphaSort: {
-	/**
-	Get a comparator function to be used as argument for `Array#sort`.
+/**
+Get a comparator function to be used as argument for `Array#sort`.
 
-	@param options - Choose ascending/descending, case sensitivity, and number natural ordering.
+@param options - Choose ascending/descending, case sensitivity, and number natural ordering.
 
-	@example
-	```
-	import alphaSort = require('alpha-sort');
+@example
+```
+import alphaSort = require('alpha-sort');
 
-	['b', 'a', 'c'].sort(alphaSort());
-	//=> ['a', 'b', 'c']
+['b', 'a', 'c'].sort(alphaSort());
+//=> ['a', 'b', 'c']
 
-	['b', 'a', 'c'].sort(alphaSort({descending: true}));
-	//=> ['c', 'b', 'a']
+['b', 'a', 'c'].sort(alphaSort({descending: true}));
+//=> ['c', 'b', 'a']
 
-	['B', 'a', 'C'].sort(alphaSort({caseInsensitive: true}));
-	//=> ['a', 'B', 'C']
+['B', 'a', 'C'].sort(alphaSort({caseInsensitive: true}));
+//=> ['a', 'B', 'C']
 
-	['file10.txt', 'file2.txt', 'file03.txt'].sort(alphaSort({natural: true}));
-	//=> ['file2.txt', 'file03.txt', 'file10.txt']
-	```
-	*/
-	(options?: alphaSort.Options): alphaSort.StringComparator;
-};
+['file10.txt', 'file2.txt', 'file03.txt'].sort(alphaSort({natural: true}));
+//=> ['file2.txt', 'file03.txt', 'file10.txt']
+```
+*/
+declare const alphaSort: (options?: alphaSort.Options) => alphaSort.StringComparator;
 
 export = alphaSort;

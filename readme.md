@@ -1,16 +1,14 @@
-# alpha-sort [![Build Status](https://travis-ci.org/sindresorhus/alpha-sort.svg?branch=master)](https://travis-ci.org/sindresorhus/alpha-sort)
+# alpha-sort
 
 > Alphabetically sort an array of strings
 
 With correct sorting of unicode characters. Supports [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) with an option.
-
 
 ## Install
 
 ```
 $ npm install alpha-sort
 ```
-
 
 ## Usage
 
@@ -29,7 +27,6 @@ const alphaSort = require('alpha-sort');
 ['file10.txt', 'file2.txt', 'file03.txt'].sort(alphaSort({natural: true}));
 //=> ['file2.txt', 'file03.txt', 'file10.txt']
 ```
-
 
 ## API
 
@@ -100,12 +97,6 @@ const alphaSort = require('alpha-sort');
 
 Note: If two elements are considered equal when sorting with a custom preprocessor, the tie-break will be a comparison without the custom preprocessor.
 
-
 ## Related
 
 - [num-sort](https://github.com/sindresorhus/num-sort) - Sort an array of numbers
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

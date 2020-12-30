@@ -1,5 +1,4 @@
 'use strict';
-
 const {baseCompare, naturalCompare} = require('./compare');
 
 function alphaSort(options = {}) {
