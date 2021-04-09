@@ -1,5 +1,5 @@
 import {expectType, expectAssignable} from 'tsd';
-import alphaSort = require('.');
+import alphaSort from './index.js';
 
 declare const options: {
 	descending?: boolean;

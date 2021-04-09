@@ -13,7 +13,7 @@ $ npm install alpha-sort
 ## Usage
 
 ```js
-const alphaSort = require('alpha-sort');
+import alphaSort from 'alpha-sort';
 
 ['b', 'a', 'c'].sort(alphaSort());
 //=> ['a', 'b', 'c']
@@ -55,7 +55,7 @@ Whether or not to sort case-insensitively.
 Note: If two elements are considered equal in the case-insensitive comparison, the tie-break will be a standard (case-sensitive) comparison. Example:
 
 ```js
-const alphaSort = require('alpha-sort');
+import alphaSort from 'alpha-sort';
 
 ['bar', 'baz', 'Baz'].sort(alphaSort({caseInsensitive: true}));
 //=> ['bar', 'Baz', 'baz']
@@ -71,7 +71,7 @@ Whether or not to sort using [natural sort order](https://en.wikipedia.org/wiki/
 Note: If two elements are considered equal in the natural sort order comparison, the tie-break will be a standard (non-natural) comparison. Example:
 
 ```js
-const alphaSort = require('alpha-sort');
+import alphaSort from 'alpha-sort';
 
 ['file10.txt', 'file05.txt', 'file0010.txt'].sort(alphaSort({natural: true}));
 //=> ['file05.txt', 'file0010.txt', 'file10.txt']
@@ -87,7 +87,7 @@ A custom function that you can provide to manipulate the elements before sorting
 This can be used, for example, if you are sorting book titles in English and want to ignore common articles such as `the`, `a` or `an`:
 
 ```js
-const alphaSort = require('alpha-sort');
+import alphaSort from 'alpha-sort';
 
 ['The Foo', 'Bar'].sort(alphaSort({
 	preprocessor: title => title.replace(/^(?:the|a|an) /i, '')

@@ -1,5 +1,5 @@
 import test from 'ava';
-import alphaSort from '.';
+import alphaSort from './index.js';
 
 test('main', t => {
 	t.is(typeof alphaSort(), 'function');
@@ -29,7 +29,7 @@ test('case insensitive', t => {
 });
 
 test('`natural` option', t => {
-	const numbers = length => [...new Array(length)].map((_, index) => String(index));
+	const numbers = length => [...Array.from({length})].map((_, index) => String(index));
 
 	t.deepEqual(
 		numbers(200).reverse().sort(alphaSort({natural: true})),

@@ -1,7 +1,6 @@
-'use strict';
-const {baseCompare, naturalCompare} = require('./compare');
+import {baseCompare, naturalCompare} from './compare.js';
 
-function alphaSort(options = {}) {
+export default function alphaSort(options = {}) {
 	if (arguments.length === 2) {
 		throw new Error('Invalid `alphaSort` call. Did you use `.sort(alphaSort)` instead of `.sort(alphaSort())` by mistake?');
 	}
@@ -39,5 +38,3 @@ function alphaSort(options = {}) {
 
 	return compare;
 }
-
-module.exports = alphaSort;

@@ -1,6 +1,6 @@
-'use strict';
-
 const collator = new Intl.Collator();
+
+// eslint-disable-next-line import/no-mutable-exports
 let baseCompare = (left, right) => left === right ? 0 : collator.compare(left, right);
 
 const brokenLocaleCompare = collator.compare('b', 'å') > -1;
@@ -47,4 +47,7 @@ function naturalCompare(left, right) {
 	return baseCompare(left, right);
 }
 
-module.exports = {baseCompare, naturalCompare};
+export {
+	baseCompare,
+	naturalCompare
+};
