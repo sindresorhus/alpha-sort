@@ -1,6 +1,6 @@
 {
 	"name": "alpha-sort",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"description": "Alphabetically sort an array of strings",
 	"license": "MIT",
 	"repository": "sindresorhus/alpha-sort",
